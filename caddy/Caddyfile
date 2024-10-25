@@ -1,0 +1,138 @@
+# global options
+{
+	email k7bcx@arrl.net
+
+	on_demand_tls {
+		# restrict TLS on demand certificates to those that are authorized.
+		ask http://localhost/on_demand/ask
+	}
+
+	# TODO(bc): don't really need to do this, as /var/lib/caddy is caddy's home directory.
+	storage file_system {
+		root /var/lib/caddy
+	}
+
+	#acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
+}
+
+# reverse proxy frontail
+igate.k7bcx.com {
+	encode zstd gzip
+
+	header X-Robots-Tag "noindex, nofollow"
+	# TODO(bc): HSTS headers and related
+
+	reverse_proxy {
+		to http://127.0.0.1:9001
+		header_down +X-Robots-Tag "noindex, nofollow"
+	}
+}
+
+{$DASHBOARD_DOMAIN} {
+	encode zstd gzip
+
+	header X-Robots-Tag "noindex, nofollow"
+	# TODO(bc): HSTS headers and related
+
+#	@unauthenticated {
+#		not header Cookie grafana_session*
+#	}
+#
+#	@unauthenticated_login {
+#		path /login
+#		not header Cookie grafana_session*
+#	}
+#
+#	reverse_proxy @unauthenticated {
+#		to http://127.0.0.1:3000
+#		header_down +X-Robots-Tag "noindex, nofollow"
+#
+#		header_up -X-WEBAUTH-USER
+#		header_up -X-WEBAUTH-ROLE
+#
+#		header_up X-WEBAUTH-USER "public"
+#		header_up X-WEBAUTH-ROLE "Viewer"
+#	}
+#
+#	handle @unauthenticated_login {
+#		basic_auth {
+#			admin {$ADMIN_HASH}
+#		}
+#
+#		reverse_proxy {
+#			to http://127.0.0.1:3000
+#			header_down +X-Robots-Tag "noindex, nofollow"
+#
+#			header_up -X-WEBAUTH-USER
+#			header_up -X-WEBAUTH-ROLE
+#
+#			header_up X-WEBAUTH-USER "admin"
+#			header_up X-WEBAUTH-ROLE "Admin"
+#		}
+#	}
+
+	reverse_proxy {
+		to http://127.0.0.1:3000
+		header_down +X-Robots-Tag "noindex, nofollow"
+
+		header_up -X-WEBAUTH-USER
+		header_up -X-WEBAUTH-ROLE
+	}
+}
+
+# TODO(bc): stop handling LOGS_DOMAIN and reverse proxying to fluent-bit; use
+# fluent-bit's forward output plugin and Vector's fluent source instead to get
+# the logs into the dashboard.
+{$LOGS_DOMAIN} {
+	encode zstd gzip
+
+	header X-Robots-Tag "noindex, nofollow"
+	# TODO(bc): HSTS headers and related
+
+	@fluent {
+		method POST
+		header Content-Type application/json
+		header Authorization "Bearer {$LOGS_TOKEN}"
+	}
+
+	reverse_proxy @fluent {
+		to http://127.0.0.1:9880
+		header_down +X-Robots-Tag "noindex, nofollow"
+	}
+}
+
+{$METRICS_DOMAIN} {
+	encode zstd gzip
+
+	header X-Robots-Tag "noindex, nofollow"
+	# TODO(bc): HSTS headers and related
+
+	@telegraf {
+		method POST
+		header Authorization "Token {$METRICS_TOKEN}"
+	}
+
+	reverse_proxy @telegraf {
+		to http://127.0.0.1:8186
+		header_down +X-Robots-Tag "noindex, nofollow"
+	}
+}
+
+http://localhost {
+	# the ask matcher is to support the on_demand.ask directive
+	@ask {
+		method GET
+		path /on_demand/ask
+		query domain=igate.k7bcx.com
+		query domain={$DASHBOARD_DOMAIN}
+		query domain={$LOGS_DOMAIN}
+		query domain={$METRICS_DOMAIN}
+	}
+
+	respond @ask 200
+
+	tls internal {
+		on_demand
+	}
+}
