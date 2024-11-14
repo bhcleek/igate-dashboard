@@ -1619,7 +1619,7 @@
                   "min": 2
                 },
                 "symbol": {
-                  "fixed": "img/icons/marker/circle.svg",
+                  "fixed": "img/icons/marker/triangle.svg",
                   "mode": "fixed"
                 },
                 "symbolAlign": {
