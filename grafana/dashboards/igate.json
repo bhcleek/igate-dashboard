@@ -71,10 +71,7 @@
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "number of packets uploaded to internet server",
       "fieldConfig": {
         "defaults": {
@@ -134,10 +131,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -185,10 +179,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "number of packets downloaded from internet server",
       "fieldConfig": {
         "defaults": {
@@ -248,10 +239,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -299,10 +287,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "number of reachable stations",
       "fieldConfig": {
         "defaults": {
@@ -363,10 +348,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -414,10 +396,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "stations heard in the last 30 minutes",
       "fieldConfig": {
         "defaults": {
@@ -478,10 +457,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -529,10 +505,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "stations heard directly in the last 30 minutes",
       "fieldConfig": {
         "defaults": {
@@ -593,10 +566,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -644,10 +614,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -706,10 +673,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -757,10 +721,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "messages from the internet server that have been transmitted over the radio",
       "fieldConfig": {
         "defaults": {
@@ -821,10 +782,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -872,10 +830,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "non-message packets received from the internet server which have been transmitted over the radio",
       "fieldConfig": {
         "defaults": {
@@ -936,10 +891,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1000,10 +952,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1086,10 +1035,7 @@
       "targets": [
         {
           "alias": "all rx",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1134,10 +1080,7 @@
         },
         {
           "alias": "reachable stations",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1182,10 +1125,7 @@
         },
         {
           "alias": "direct rx",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1230,10 +1170,7 @@
         },
         {
           "alias": "messages transmitted",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1285,10 +1222,7 @@
         },
         {
           "alias": "other packets transmitted",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1345,10 +1279,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1430,10 +1361,7 @@
       "targets": [
         {
           "alias": "sent",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1484,10 +1412,7 @@
         },
         {
           "alias": "recv",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1544,10 +1469,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "PCAC1136F1F038CF9"
-      },
+      "datasource": "metrics-influxql",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1662,10 +1584,7 @@
       "pluginVersion": "11.3.0",
       "targets": [
         {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "PCAC1136F1F038CF9"
-          },
+          "datasource": "metrics-influxql",
           "groupBy": [
             {
               "params": [
