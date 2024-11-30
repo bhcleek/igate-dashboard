@@ -711,7 +711,7 @@
       "type": "row"
     },
     {
-      "datasource": "metrics-influxql",
+      "datasource": "VictoriaMetrics",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -793,243 +793,52 @@
       "pluginVersion": "11.3.0+security-01",
       "targets": [
         {
-          "alias": "all rx",
-          "datasource": "metrics-influxql",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "direwolf.stats",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "dwstats_rf"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=",
-              "value": "K7BCX-10"
-            }
-          ]
+          "datasource": "VictoriaMetrics",
+          "editorMode": "builder",
+          "expr": "direwolf.stats_dwstats_rf{host=\"$station\"}",
+          "interval": "",
+          "legendFormat": "all rf",
+          "range": true,
+          "refId": "A"
         },
         {
-          "alias": "reachable stations",
-          "datasource": "metrics-influxql",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "direwolf.stats",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "dwstats_loc"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=",
-              "value": "K7BCX-10"
-            }
-          ]
-        },
-        {
-          "alias": "direct rx",
-          "datasource": "metrics-influxql",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "direwolf.stats",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "dwstats_dir"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=",
-              "value": "K7BCX-10"
-            }
-          ]
-        },
-        {
-          "alias": "messages transmitted",
-          "datasource": "metrics-influxql",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "5m"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
+          "datasource": "VictoriaMetrics",
+          "editorMode": "builder",
+          "expr": "direwolf.stats_dwstats_loc{host=\"$station\"}",
           "hide": false,
-          "measurement": "direwolf.stats",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "dwstats_msg"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "median"
-              },
-              {
-                "params": [
-                  "5m"
-                ],
-                "type": "derivative"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=",
-              "value": "K7BCX-10"
-            }
-          ]
+          "legendFormat": "reachable stations",
+          "range": true,
+          "refId": "B"
         },
         {
-          "alias": "other packets transmitted",
-          "datasource": "metrics-influxql",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "5m"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
+          "datasource": "VictoriaMetrics",
+          "editorMode": "builder",
+          "expr": "direwolf.stats_dwstats_dir{host=\"$station\"}",
           "hide": false,
-          "measurement": "direwolf.stats",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "E",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "dwstats_pkt"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "median"
-              },
-              {
-                "params": [
-                  "5m"
-                ],
-                "type": "derivative"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=",
-              "value": "K7BCX-10"
-            }
-          ]
+          "interval": "",
+          "legendFormat": "direct rx",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": "VictoriaMetrics",
+          "editorMode": "builder",
+          "expr": "increase(direwolf.stats_dwstats_msg{host=\"$station\"}[30m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "messages transmitted",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": "VictoriaMetrics",
+          "editorMode": "builder",
+          "expr": "increase(direwolf.stats_dwstats_pkt{host=\"$station\"}[30m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "other packets transmitted",
+          "range": true,
+          "refId": "E"
         }
       ],
       "timeFrom": "1d",
@@ -1038,7 +847,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "metrics-influxql",
+      "datasource": "VictoriaMetrics",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1116,110 +925,24 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.3.0+security-01",
       "targets": [
         {
-          "alias": "sent",
-          "datasource": "metrics-influxql",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "5m"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "direwolf.stats",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "dwstats_up"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  "5m"
-                ],
-                "type": "derivative"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=",
-              "value": "K7BCX-10"
-            }
-          ]
+          "datasource": "VictoriaMetrics",
+          "editorMode": "builder",
+          "expr": "increase(direwolf.stats_dwstats_up{host=\"$station\"}[30m])",
+          "legendFormat": "sent",
+          "range": true,
+          "refId": "A"
         },
         {
-          "alias": "recv",
-          "datasource": "metrics-influxql",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "5m"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
+          "datasource": "VictoriaMetrics",
+          "editorMode": "builder",
+          "expr": "increase(direwolf.stats_dwstats_down{host=\"$station\"}[30m])",
           "hide": false,
-          "measurement": "direwolf.stats",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "dwstats_down"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "median"
-              },
-              {
-                "params": [
-                  "5m"
-                ],
-                "type": "derivative"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=",
-              "value": "K7BCX-10"
-            }
-          ]
+          "legendFormat": "recv",
+          "range": true,
+          "refId": "B"
         }
       ],
       "timeFrom": "1d",
