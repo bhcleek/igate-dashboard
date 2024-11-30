@@ -1708,7 +1708,20 @@
     "aprs"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "text": "K7BCX-10",
+          "value": "K7BCX-10"
+        },
+        "hide": 2,
+        "label": "station",
+        "name": "station",
+        "query": "K7BCX-10",
+        "skipUrlSync": true,
+        "type": "constant"
+      }
+    ]
   },
   "time": {
     "from": "now-2d",
