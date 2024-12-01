@@ -44,14 +44,7 @@ apt-get --yes --quiet update
 
 printf "=====> installing packages\n" >&2
 apt-get --yes --quiet install nodejs npm telegraf influxdb2 grafana fluent-bit caddy jq
-
-#printf "=====> installing snap\n" >&2
-#snap install core
-#snap refresh core
-#
-#printf "=====> installing certbot\n" >&2
-#snap install --classic certbot
-#ln -s /snap/bin/certbot /usr/bin/certbot
+wget -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.106.0/victoria-metrics-linux-amd64-v1.106.0.tar.gz | tar -C /usr/local/bin -zxv
 
 printf "=====> reloading systemd daemon\n" >&2
 systemctl daemon-reload

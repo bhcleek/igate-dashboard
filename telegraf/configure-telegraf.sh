@@ -28,9 +28,6 @@ EOF
 sed -f - -i /etc/telegraf/telegraf.d/direwolf.conf <<EOF
 	/^\[\[outputs\.influxdb_v2]]/ {
 		a \
-		urls =  ["http://127.0.0.1:8086"]
-
-		a \
 		organization = "${ORG}"
 
 		a \

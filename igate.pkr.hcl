@@ -171,6 +171,26 @@ build {
   }
 
   provisioner "file" {
+    sources = [
+      "victoria-metrics/victoria-metrics.service"
+    ]
+    destination = "/etc/systemd/system/victoria-metrics.service"
+  }
+
+  provisioner "shell" {
+    scripts = [
+      "victoria-metrics/configure-victoria-metrics.sh"
+    ]
+  }
+
+  provisioner "shell" {
+    inline = [
+      "systemctl daemon-reload",
+      "systemctl enable victoria-metrics"
+    ]
+  }
+
+  provisioner "file" {
     source      = "telegraf/direwolf.conf"
     destination = "/etc/telegraf/telegraf.d/"
   }

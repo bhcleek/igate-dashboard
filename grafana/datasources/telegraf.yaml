@@ -1,6 +1,7 @@
 # # config file version
 apiVersion: 1
 
+prune: true
 # # list of datasources to insert/update depending
 # # on what's available in the database
 datasources:
@@ -45,3 +46,7 @@ datasources:
 #   version: 1
 #   # <bool> allow users to edit datasources from the UI.
 #   editable: false
+  - name: VictoriaMetrics
+    type: victoriametrics-datasource
+    access: proxy
+    url: http://localhost:8428
