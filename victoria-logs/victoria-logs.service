@@ -1,0 +1,20 @@
+[Unit]
+Description=VictoriaLogs service
+After=network.target
+
+[Service]
+Type=simple
+User=victorialogs
+Group=victorialogs
+ExecStart=/usr/local/bin/victoria-logs-prod -storageDataPath=/var/lib/victoria-logs -httpListenAddr=127.0.0.1:9428 -retentionPeriod=90d
+SyslogIdentifier=victorialogs
+Restart=on-failure
+
+PrivateTmp=yes
+ProtectHome=yes
+NoNewPrivileges=yes
+
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

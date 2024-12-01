@@ -191,6 +191,26 @@ build {
   }
 
   provisioner "file" {
+    sources = [
+      "victoria-logs/victoria-logs.service"
+    ]
+    destination = "/etc/systemd/system/victoria-logs.service"
+  }
+
+  provisioner "shell" {
+    scripts = [
+      "victoria-logs/configure-victoria-logs.sh"
+    ]
+  }
+
+  provisioner "shell" {
+    inline = [
+      "systemctl daemon-reload",
+      "systemctl enable victoria-logs"
+    ]
+  }
+
+  provisioner "file" {
     source      = "telegraf/direwolf.conf"
     destination = "/etc/telegraf/telegraf.d/"
   }

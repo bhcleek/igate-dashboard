@@ -93,7 +93,7 @@ sed -f - -i /etc/grafana/grafana.ini <<EOF
 
 	/^\[plugins]/ {
 		a \
-		allow_loading_unsigned_plugins = victoriametrics-datasource
+		allow_loading_unsigned_plugins = victoriametrics-datasource,victorialogs-datasource
 	}
 EOF
 
@@ -103,6 +103,7 @@ mkdir /var/lib/grafana/dashboards
 mkdir /var/lib/grafana/plugins
 
 wget -nv -O - https://github.com/VictoriaMetrics/victoriametrics-datasource/releases/download/v0.10.3/victoriametrics-datasource-v0.10.3.tar.gz | tar -C /var/lib/grafana/plugins -zxv
+wget -nv -O - https://github.com/VictoriaMetrics/victorialogs-datasource/releases/download/v0.10.0/victorialogs-datasource-v0.10.0.tar.gz | tar -C /var/lib/grafana/plugins -zxv
 
 # ensure that all the files and directories in /var/lib/grafana have the expected ownership
 chown -R --reference /var/lib/grafana /var/lib/grafana
