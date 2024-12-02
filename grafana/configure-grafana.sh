@@ -102,7 +102,7 @@ grafana-cli admin reset-admin-password "${ADMIN_PASSWORD}"
 mkdir /var/lib/grafana/dashboards
 mkdir /var/lib/grafana/plugins
 
-wget -O - https://github.com/VictoriaMetrics/victoriametrics-datasource/releases/download/v0.10.3/victoriametrics-datasource-v0.10.3.tar.gz | tar -C /var/lib/grafana/plugins -zxv
+wget -nv -O - https://github.com/VictoriaMetrics/victoriametrics-datasource/releases/download/v0.10.3/victoriametrics-datasource-v0.10.3.tar.gz | tar -C /var/lib/grafana/plugins -zxv
 
 # ensure that all the files and directories in /var/lib/grafana have the expected ownership
 chown -R --reference /var/lib/grafana /var/lib/grafana
