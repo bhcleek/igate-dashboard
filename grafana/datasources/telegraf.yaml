@@ -50,3 +50,7 @@ datasources:
     type: victoriametrics-datasource
     access: proxy
     url: http://localhost:8428
+  - name: VictoriaLogs
+    type: victorialogs-datasource
+    access: proxy
+    url: http://localhost:9428

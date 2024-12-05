@@ -96,8 +96,21 @@ igate.k7bcx.com {
 		header Authorization "Bearer {$LOGS_TOKEN}"
 	}
 
+	@victoria {
+		method POST
+		path /insert/jsonline
+		header Content-Type application/json
+		header Content-Type application/x-ndjson
+		header Authorization "Bearer {$LOGS_TOKEN}"
+	}
+
 	reverse_proxy @fluent {
 		to http://127.0.0.1:9880
+		header_down +X-Robots-Tag "noindex, nofollow"
+	}
+
+	reverse_proxy @victoria {
+		to http://127.0.0.1:9428
 		header_down +X-Robots-Tag "noindex, nofollow"
 	}
 }
