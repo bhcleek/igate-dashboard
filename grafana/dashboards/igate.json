@@ -1014,18 +1014,22 @@
       "type": "timeseries"
     },
     {
-      "datasource": "metrics-influxql",
+      "id": 36,
+      "type": "geomap",
+      "title": "Positions Rx via RF",
+      "gridPos": {
+        "x": 0,
+        "y": 20,
+        "h": 20,
+        "w": 24
+      },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "fixedColor": "dark-red",
-            "mode": "fixed"
-          },
           "custom": {
             "hideFrom": {
-              "legend": false,
               "tooltip": false,
-              "viz": false
+              "viz": false,
+              "legend": false
             }
           },
           "mappings": [],
@@ -1037,33 +1041,77 @@
                 "value": null
               }
             ]
+          },
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
           }
         },
         "overrides": []
       },
-      "gridPos": {
-        "h": 20,
-        "w": 24,
-        "x": 0,
-        "y": 20
-      },
-      "id": 36,
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "source": "labels",
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "name",
+                "alias": "name"
+              },
+              {
+                "path": "latitude",
+                "alias": "latitude"
+              },
+              {
+                "path": "longitude",
+                "alias": "longitude"
+              }
+            ],
+            "replace": true,
+            "keepTime": true
+          }
+        }
+      ],
+      "transparent": true,
+      "pluginVersion": "11.3.0+security-01",
+      "targets": [
+        {
+          "datasource": "VictoiraLogs",
+          "refId": "A",
+          "editorMode": "code",
+          "expr": "_time:24h AND tags.host:$station | fields fields.latitude,fields.longitude,tags.name | rename  tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
+          "queryType": "instant"
+        }
+      ],
       "maxDataPoints": 1,
+      "datasource": "VictoriaLogs",
       "options": {
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 45.579288,
+          "lon": -122.644851,
+          "zoom": 11
+        },
+        "controls": {
+          "showZoom": true,
+          "mouseWheelZoom": false,
+          "showAttribution": true,
+          "showScale": false,
+          "showMeasure": false,
+          "showDebug": false
+        },
+        "tooltip": {
+          "mode": "details"
+        },
         "basemap": {
           "config": {},
           "name": "Basemap",
           "opacity": 1,
           "tooltip": true,
           "type": "osm-standard"
-        },
-        "controls": {
-          "mouseWheelZoom": false,
-          "showAttribution": true,
-          "showDebug": false,
-          "showMeasure": false,
-          "showScale": false,
-          "showZoom": true
         },
         "layers": [
           {
@@ -1108,101 +1156,16 @@
               }
             },
             "location": {
-              "mode": "auto"
+              "mode": "auto",
+              "lookup": "Line"
             },
             "name": "positions",
             "tooltip": true,
             "type": "markers"
           }
-        ],
-        "tooltip": {
-          "mode": "details"
-        },
-        "view": {
-          "allLayers": true,
-          "id": "coords",
-          "lat": 45.579288,
-          "lon": -122.644851,
-          "zoom": 11
-        }
+        ]
       },
-      "pluginVersion": "11.3.0+security-01",
-      "targets": [
-        {
-          "datasource": "metrics-influxql",
-          "groupBy": [
-            {
-              "params": [
-                "name"
-              ],
-              "type": "tag"
-            }
-          ],
-          "limit": "100",
-          "measurement": "dwlogs",
-          "orderByTime": "DESC",
-          "policy": "default",
-          "query": "SELECT \"longitude\" AS \"longitude\", \"latitude\" AS \"latitude\", \"chan\" +1 FROM \"dwlogs\" WHERE (\"path\" = '/var/log/direwolf/direwolf.log') AND $timeFilter GROUP BY \"name\" ORDER BY time DESC LIMIT 100",
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "longitude"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "longitude"
-                ],
-                "type": "alias"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "latitude"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "latitude"
-                ],
-                "type": "alias"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "chan"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "+1"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "path",
-              "operator": "=",
-              "value": "/var/log/direwolf/direwolf.log"
-            }
-          ]
-        }
-      ],
-      "timeFrom": "1d",
-      "title": "Positions Rx via RF",
-      "transparent": true,
-      "type": "geomap"
+      "timeFrom": "1d"
     },
     {
       "collapsed": true,
