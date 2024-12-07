@@ -102,17 +102,6 @@ igate.k7bcx.com {
 		to http://127.0.0.1:9428
 		header_down +X-Robots-Tag "noindex, nofollow"
 	}
-
-	@fluent {
-		method POST
-		header Content-Type application/json
-		header Authorization "Bearer {$LOGS_TOKEN}"
-	}
-
-	reverse_proxy @fluent {
-		to http://127.0.0.1:9880
-		header_down +X-Robots-Tag "noindex, nofollow"
-	}
 }
 
 {$METRICS_DOMAIN} {
