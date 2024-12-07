@@ -52,24 +52,6 @@ variable "telegraf_token" {
   sensitive   = true
 }
 
-variable "influxdb_admin_username" {
-  type        = string
-  description = "admin username for influxdb2"
-  sensitive   = true
-}
-
-variable "influxdb_admin_password" {
-  type        = string
-  description = "admin password for influxdb2"
-  sensitive   = true
-}
-
-variable "influxdb_bucket" {
-  type        = string
-  description = "influxdb2 metrics bucket name"
-  default     = "metrics"
-}
-
 variable "call" {
   type        = string
   description = "the call sign of the igate"
@@ -158,18 +140,6 @@ build {
     ]
   }
 
-  provisioner "shell" {
-    scripts = [
-      "influxdb/configure-influxdb.sh"
-    ]
-    environment_vars = [
-      "USERNAME=${var.influxdb_admin_username}",
-      "PASSWORD=${var.influxdb_admin_password}",
-      "ORG=${var.call}",
-      "BUCKET=${var.influxdb_bucket}"
-    ]
-  }
-
   provisioner "file" {
     sources = [
       "victoria-metrics/victoria-metrics.service"
@@ -221,7 +191,6 @@ build {
     ]
     environment_vars = [
       "ORG=${var.call}",
-      "BUCKET=${var.influxdb_bucket}",
       "INFLUX_PROXY_TOKEN=${var.telegraf_token}",
       "TELEGRAF_HOST=${var.metrics_domain}"
     ]
@@ -258,16 +227,6 @@ build {
       "grafana/dashboards/igate.json"
     ]
     destination = "/var/lib/grafana/dashboards/"
-  }
-
-  provisioner "shell" {
-    scripts = [
-      "grafana/finalize-grafana.sh"
-    ]
-    environment_vars = [
-      "ORG=${var.call}",
-      "BUCKET=${var.influxdb_bucket}"
-    ]
   }
 
   provisioner "file" {
