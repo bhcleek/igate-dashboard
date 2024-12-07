@@ -43,7 +43,7 @@ printf "deb [signed-by=/etc/apt/keyrings/fluentbit.gpg] https://packages.fluentb
 apt-get --yes --quiet update
 
 printf "=====> installing packages\n" >&2
-apt-get --yes --quiet install nodejs npm telegraf influxdb2 grafana fluent-bit caddy jq
+apt-get --yes --quiet install nodejs npm telegraf grafana fluent-bit caddy jq
 wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.106.0/victoria-metrics-linux-amd64-v1.106.0.tar.gz | tar -C /usr/local/bin -zxv
 wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.0.0-victorialogs/victoria-logs-linux-amd64-v1.0.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv
 wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.0.0-victorialogs/vlogscli-linux-amd64-v1.0.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv

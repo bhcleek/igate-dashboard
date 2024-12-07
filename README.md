@@ -23,10 +23,6 @@ While this repository contains an encrypted file with some values for variables 
 
 `telegraf_token` is used as the token to authenticate requests proxied through Caddy to Telegraf for POSTing metrics.
 
-`influxdb_admin_username` is used as InfluxDB's [initial admin user](https://docs.influxdata.com/influxdb/v2/get-started/setup/?t=influx+CLI#run-initial-setup-process). It is used to create the operator token for the org.
-
-`influxdb_admin_password` is used as InfluxDB's [initial admin password](https://docs.influxdata.com/influxdb/v2/get-started/setup/?t=influx+CLI#run-initial-setup-process). It is used to create the operator token for the org.
-
 `digitalocean_token` is the token to authenticate with the DigitalOcean API used with the [DigitalOcean builder](https://developer.hashicorp.com/packer/integrations/digitalocean/digitalocean/latest/components/builder/digitalocean#required:) to provision the image. Required.
 
 `dashboard_domain` is the domain of the dashboard itself. Defaults to `dashboard.k7bcx.com`, but that is most certainly suitable only for me; you should choose your own value.
@@ -42,12 +38,13 @@ While this repository contains an encrypted file with some values for variables 
 The dashboards consists of several components:
 * A Caddy webserver to handle TLS and authentication; Caddy proxies all requests that originate outside of the dashboard itself.
 * Fluent Bit to handle processing direwolf logs from the APRS IGate.
-* Telegraf to proxying metrics to influxdb.
-* InfluxDB to persist the metrics.
+* Telegraf for proxying metrics.
+* VictoriaMetrics to persist the metrics.
+* VictoriaLogs to persist both raw direwolf logs and the log of parsed packets.
 * Frontail to expose the IGate's logs on the Grafana dashboard.
 * Grafana to provide a nice UI for the metrics and logs.
 
-A Caddy webserver reverse proxies to Grafana, Fluent Bit, and Telegraf. Caddy also handles provisioning and renewing LetsEncrypt certificates as needed.
+A Caddy webserver reverse proxies to Grafana, VictoriaMetrics, and VictoriaLogs, Fluent Bit, and Telegraf. Caddy also handles provisioning and renewing LetsEncrypt certificates as needed.
 
 The IGate sends its logs to Fluent Bit via the [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to Telegraf to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/inputs/http) input plugin and Telegraf's [influxdb_v2_listenter](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/influxdb_v2_listener/README.md) plugin.
 
