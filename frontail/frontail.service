@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=npx frontail --host 127.0.0.1 --disable-usage-stats --theme dark --ui-highlight --ui-highlight-preset /etc/frontail/direwolf.json --ui-hide-topbar /var/log/direwolf/direwolf.log
+ExecStart=/usr/local/bin/tail-station-logs
 Restart=on-failure
 
 [Install]

@@ -100,6 +100,22 @@ build {
 
   provisioner "file" {
     sources = [
+      "frontail/tail-station-logs"
+    ]
+    destination = "/usr/local/bin/"
+  }
+
+  provisioner "shell" {
+    scripts = [
+      "frontail/configure-frontail.sh"
+    ]
+    environment_vars = [
+      "CALL=${var.call}"
+    ]
+  }
+
+  provisioner "file" {
+    sources = [
       "frontail/frontail.service"
     ]
     destination = "/etc/systemd/system/"

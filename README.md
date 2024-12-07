@@ -47,7 +47,7 @@ A Caddy webserver reverse proxies to Grafana, VictoriaLogs, and Telegraf. Caddy 
 
 The IGate sends its logs to VictoriaLogs via Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to Telegraf to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to VictoriaLogs HTTP listener and Telegraf's [influxdb_v2_listener](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/influxdb_v2_listener/README.md) plugin.
 
-The Fluent Bit and Telegraf configurations on the igate can be seen in my [Ansible playbooks](https://github.com/bhcleek/ansible-playbooks). The best starting point to review is the [aprs-igate role](https://github.com/bhcleek/ansible-playbooks/tree/main/roles/aprs-igate).
+The Fluent Bit, Telegraf, and Dire Wolf configurations on the igate can be seen in my [Ansible playbooks](https://github.com/bhcleek/ansible-playbooks). The best starting point to review is the [aprs-igate role](https://github.com/bhcleek/ansible-playbooks/tree/main/roles/aprs-igate).
 
 Grafana exposes the metrics and direwolf logs. The latter is exposed as a stream in the browser via Frontail. The logs can be tailed directly or in an iframe on the dashboard.
 
