@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euC -o pipefail
+
 mkdir /etc/systemd/system/telegraf.service.d
 
 printf "setting tokens\n" >&2
