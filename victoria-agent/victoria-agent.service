@@ -1,0 +1,20 @@
+[Unit]
+Description=VictoriaAgent service
+After=network.target
+
+[Service]
+Type=simple
+User=victoriaagent
+Group=victoriaagent
+ExecStart=/usr/local/bin/vmagent-prod -remoteWrite.tmpDataPath=/var/lib/victoria-agent -remoteWrite.url=http://127.0.0.1:8428/api/v1/write -httpListenAddr=127.0.0.1:8429
+SyslogIdentifier=victoriaagent
+Restart=on-failure
+
+PrivateTmp=yes
+ProtectHome=yes
+NoNewPrivileges=yes
+
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

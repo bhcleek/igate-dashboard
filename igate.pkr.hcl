@@ -169,6 +169,26 @@ build {
   }
 
   provisioner "file" {
+    sources = [
+      "victoria-agent/victoria-agent.service"
+    ]
+    destination = "/etc/systemd/system/victoria-agent.service"
+  }
+
+  provisioner "shell" {
+    scripts = [
+      "victoria-agent/configure-victoria-agent.sh"
+    ]
+  }
+
+  provisioner "shell" {
+    inline = [
+      "systemctl daemon-reload",
+      "systemctl enable victoria-agent"
+    ]
+  }
+
+  provisioner "file" {
     source      = "telegraf/direwolf.conf"
     destination = "/etc/telegraf/telegraf.d/"
   }
