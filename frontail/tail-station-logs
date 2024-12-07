@@ -1,0 +1,3 @@
+#!/bin/env bash
+
+curl --no-progress-meter -N http://127.0.0.1:9428/select/logsql/tail -d 'query=host:__CALL__ SYSLOG_IDENTIFIER:direwolf | fields _msg, _time' -d 'start_offset=10m' | jq --unbuffered -r '._msg' | npx frontail --host 127.0.0.1 --disable-usage-stats --theme dark --ui-highlight --ui-highlight-preset /etc/frontail/direwolf.json --ui-hide-topbar -

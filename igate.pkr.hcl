@@ -93,37 +93,25 @@ build {
     ]
   }
 
-  provisioner "shell" {
-    inline = [
-      "mkdir /etc/fluent-bit/conf.d"
-    ]
-  }
-
-  provisioner "file" {
-    sources = [
-      "fluent/fluent-bit.conf"
-    ]
-    destination = "/etc/fluent-bit/fluent-bit.conf"
-  }
-  provisioner "shell" {
-    inline = [
-      "printf \"@SET call=%s\\n\" \"${var.call}\" >> /etc/fluent-bit/fluent-bit.conf",
-      "sed -i -e '/@SET call/ s/-/_/' /etc/fluent-bit/fluent-bit.conf"
-    ]
-  }
-
-  provisioner "file" {
-    sources = [
-      "fluent/input.conf",
-      "fluent/filter.conf",
-      "fluent/output.conf"
-    ]
-    destination = "/etc/fluent-bit/conf.d/"
-  }
-
   provisioner "file" {
     source      = "frontail/frontail.json"
     destination = "/etc/frontail/direwolf.json"
+  }
+
+  provisioner "file" {
+    sources = [
+      "frontail/tail-station-logs"
+    ]
+    destination = "/usr/local/bin/"
+  }
+
+  provisioner "shell" {
+    scripts = [
+      "frontail/configure-frontail.sh"
+    ]
+    environment_vars = [
+      "CALL=${var.call}"
+    ]
   }
 
   provisioner "file" {
