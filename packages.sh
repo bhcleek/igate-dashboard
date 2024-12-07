@@ -25,10 +25,6 @@ fi
 wget -nv -O - https://apt.grafana.com/gpg.key | gpg --dearmor > /etc/apt/keyrings/grafana.gpg
 printf "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main\n" | tee -a /etc/apt/sources.list.d/grafana.list
 
-wget -nv -O - https://repos.influxdata.com/influxdata-archive_compat.key | gpg --dearmor > /etc/apt/keyrings/influxdb.gpg
-source /etc/lsb-release
-printf "deb [signed-by=/etc/apt/keyrings/influxdb.gpg] https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable\n" | tee /etc/apt/sources.list.d/influxdb.list
-
 wget -nv -O - https://dl.cloudsmith.io/public/caddy/stable/gpg.key | gpg --dearmor > /etc/apt/keyrings/caddy.gpg
 for type in deb deb-src; do
 	printf "%s [signed-by=/etc/apt/keyrings/caddy.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main\n" "$type" | tee -a /etc/apt/sources.list.d/caddy.list

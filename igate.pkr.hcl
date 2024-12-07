@@ -188,22 +188,6 @@ build {
     ]
   }
 
-  provisioner "file" {
-    source      = "telegraf/direwolf.conf"
-    destination = "/etc/telegraf/telegraf.d/"
-  }
-
-  provisioner "shell" {
-    scripts = [
-      "telegraf/configure-telegraf.sh"
-    ]
-    environment_vars = [
-      "ORG=${var.call}",
-      "INFLUX_PROXY_TOKEN=${var.telegraf_token}",
-      "TELEGRAF_HOST=${var.metrics_domain}"
-    ]
-  }
-
   provisioner "shell" {
     scripts = [
       "grafana/configure-grafana.sh"
