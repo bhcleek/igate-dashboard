@@ -751,7 +751,7 @@
         {
           "datasource": "VictoriaMetrics",
           "editorMode": "builder",
-          "expr": "system_uptime{host=\"$station\"}",
+          "expr": "dwstats_uptime_value{host=\"$station\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
