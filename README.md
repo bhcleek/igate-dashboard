@@ -15,13 +15,13 @@ The default values are suitable for me, but likely are not suitable for anyone t
 While this repository contains an encrypted file with some values for variables that do not have defaults, unless you are me, you should choose and use your own.
 
 ## variables
-`fluent_shared_key` is used to protect access to the fluent-bit server via the Caddy reverse proxy. Required.
+`logs_token` is used to protect access to the logs backend via the Caddy reverse proxy. Required.
 
 `grafana_admin_password` is used as Grafana's [`admin_password`](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#admin_password) configuration value. Unsurprisingly, it is used as the password for the default Grafana admin. Defaults to `admin`.
 
 `grafana_secret_key` is used as Grafana's [`secret_key`](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#secret_key) configuration value. It is used to sign some Grafana datasource settings like secrets and passwords. Required.
 
-`telegraf_token` is used as the token to authenticate requests proxied through Caddy to Telegraf for POSTing metrics.
+`metrics_token` is used as the token to authenticate requests proxied through Caddy to Telegraf for POSTing metrics.
 
 `digitalocean_token` is the token to authenticate with the DigitalOcean API used with the [DigitalOcean builder](https://developer.hashicorp.com/packer/integrations/digitalocean/digitalocean/latest/components/builder/digitalocean#required:) to provision the image. Required.
 
@@ -37,15 +37,15 @@ While this repository contains an encrypted file with some values for variables 
 
 The dashboards consists of several components:
 * A Caddy webserver to handle TLS and authentication; Caddy proxies all requests that originate outside of the dashboard itself.
-* Telegraf for proxying metrics.
+* VictoriaMetrics' vmagent for proxying metrics.
 * VictoriaMetrics to persist the metrics.
 * VictoriaLogs to persist both raw direwolf logs and the log of parsed packets.
 * Frontail to expose the IGate's logs on the Grafana dashboard.
 * Grafana to provide a nice UI for the metrics and logs.
 
-A Caddy webserver reverse proxies to Grafana, VictoriaLogs, and Telegraf. Caddy also handles provisioning and renewing LetsEncrypt certificates as needed.
+A Caddy webserver reverse proxies to Grafana, VictoriaLogs, and VictoriaMetrics' vmagent. Caddy also handles provisioning and renewing LetsEncrypt certificates as needed.
 
-The IGate sends its logs to VictoriaLogs via Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to Telegraf to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to VictoriaLogs HTTP listener and Telegraf's [influxdb_v2_listener](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/influxdb_v2_listener/README.md) plugin.
+The IGate sends its logs to VictoriaLogs via Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to vmagent to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to VictoriaLogs HTTP listener and Telegraf's [influxdb_v2_listener](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/influxdb_v2_listener/README.md) plugin.
 
 The Fluent Bit, Telegraf, and Dire Wolf configurations on the igate can be seen in my [Ansible playbooks](https://github.com/bhcleek/ansible-playbooks). The best starting point to review is the [aprs-igate role](https://github.com/bhcleek/ansible-playbooks/tree/main/roles/aprs-igate).
 
