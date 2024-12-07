@@ -46,7 +46,7 @@ variable "grafana_secret_key" {
   sensitive   = true
 }
 
-variable "telegraf_token" {
+variable "metrics_token" {
   type        = string
   description = "token for telegraf authentication"
   sensitive   = true
@@ -59,9 +59,9 @@ variable "call" {
   default     = "K7BCX-10"
 }
 
-variable "fluent_shared_key" {
+variable "logs_token" {
   type        = string
-  description = "shared key for fluentbit authentication"
+  description = "token log authentication"
   sensitive   = true
 }
 
@@ -232,8 +232,8 @@ build {
       "LOGS_DOMAIN=${var.logs_domain}",
       "DASHBOARD_DOMAIN=${var.dashboard_domain}",
       "METRICS_DOMAIN=${var.metrics_domain}",
-      "LOGS_TOKEN=${var.fluent_shared_key}",
-      "METRICS_TOKEN=${var.telegraf_token}",
+      "LOGS_TOKEN=${var.logs_token}",
+      "METRICS_TOKEN=${var.metrics_token}",
       "GRAFANA_ADMIN_PASSWORD=xxxxxx"
     ]
   }
@@ -248,8 +248,8 @@ build {
       "LOGS_DOMAIN=${var.logs_domain}",
       "DASHBOARD_DOMAIN=${var.dashboard_domain}",
       "METRICS_DOMAIN=${var.metrics_domain}",
-      "LOGS_TOKEN=${var.fluent_shared_key}",
-      "METRICS_TOKEN=${var.telegraf_token}"
+      "LOGS_TOKEN=${var.logs_token}",
+      "METRICS_TOKEN=${var.metrics_token}"
     ]
   }
 
