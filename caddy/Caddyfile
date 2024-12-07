@@ -35,43 +35,6 @@ igate.k7bcx.com {
 	header X-Robots-Tag "noindex, nofollow"
 	# TODO(bc): HSTS headers and related
 
-#	@unauthenticated {
-#		not header Cookie grafana_session*
-#	}
-#
-#	@unauthenticated_login {
-#		path /login
-#		not header Cookie grafana_session*
-#	}
-#
-#	reverse_proxy @unauthenticated {
-#		to http://127.0.0.1:3000
-#		header_down +X-Robots-Tag "noindex, nofollow"
-#
-#		header_up -X-WEBAUTH-USER
-#		header_up -X-WEBAUTH-ROLE
-#
-#		header_up X-WEBAUTH-USER "public"
-#		header_up X-WEBAUTH-ROLE "Viewer"
-#	}
-#
-#	handle @unauthenticated_login {
-#		basic_auth {
-#			admin {$ADMIN_HASH}
-#		}
-#
-#		reverse_proxy {
-#			to http://127.0.0.1:3000
-#			header_down +X-Robots-Tag "noindex, nofollow"
-#
-#			header_up -X-WEBAUTH-USER
-#			header_up -X-WEBAUTH-ROLE
-#
-#			header_up X-WEBAUTH-USER "admin"
-#			header_up X-WEBAUTH-ROLE "Admin"
-#		}
-#	}
-
 	reverse_proxy {
 		to http://127.0.0.1:3000
 		header_down +X-Robots-Tag "noindex, nofollow"
@@ -81,9 +44,6 @@ igate.k7bcx.com {
 	}
 }
 
-# TODO(bc): stop handling LOGS_DOMAIN and reverse proxying to fluent-bit; use
-# fluent-bit's forward output plugin and Vector's fluent source instead to get
-# the logs into the dashboard.
 {$LOGS_DOMAIN} {
 	encode zstd gzip
 

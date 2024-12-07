@@ -234,15 +234,12 @@ build {
       "METRICS_DOMAIN=${var.metrics_domain}",
       "LOGS_TOKEN=${var.logs_token}",
       "METRICS_TOKEN=${var.metrics_token}",
-      "GRAFANA_ADMIN_PASSWORD=xxxxxx"
     ]
   }
 
   provisioner "shell" {
     inline = [
-      "printf \"ADMIN_HASH=%s\\n\" \"$(caddy hash-password --plaintext '${var.grafana_admin_password}')\" > /tmp/caddy-validate.env",
-      "caddy validate --envfile /tmp/caddy-validate.env --config /etc/caddy/Caddyfile",
-      "rm /tmp/caddy-validate.env"
+      "caddy validate --config /etc/caddy/Caddyfile",
     ]
     environment_vars = [
       "LOGS_DOMAIN=${var.logs_domain}",
