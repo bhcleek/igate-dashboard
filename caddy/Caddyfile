@@ -110,13 +110,13 @@ igate.k7bcx.com {
 	header X-Robots-Tag "noindex, nofollow"
 	# TODO(bc): HSTS headers and related
 
-	@telegraf {
+	@backend {
 		method POST
 		header Authorization "Token {$METRICS_TOKEN}"
 	}
 
-	reverse_proxy @telegraf {
-		to http://127.0.0.1:8186
+	reverse_proxy @backend {
+		to http://127.0.0.1:8429
 		header_down +X-Robots-Tag "noindex, nofollow"
 	}
 }
