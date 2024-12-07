@@ -37,18 +37,15 @@ While this repository contains an encrypted file with some values for variables 
 
 The dashboards consists of several components:
 * A Caddy webserver to handle TLS and authentication; Caddy proxies all requests that originate outside of the dashboard itself.
-* Fluent Bit to handle processing direwolf logs from the APRS IGate.
 * Telegraf for proxying metrics.
 * VictoriaMetrics to persist the metrics.
 * VictoriaLogs to persist both raw direwolf logs and the log of parsed packets.
 * Frontail to expose the IGate's logs on the Grafana dashboard.
 * Grafana to provide a nice UI for the metrics and logs.
 
-A Caddy webserver reverse proxies to Grafana, VictoriaMetrics, and VictoriaLogs, Fluent Bit, and Telegraf. Caddy also handles provisioning and renewing LetsEncrypt certificates as needed.
+A Caddy webserver reverse proxies to Grafana, VictoriaLogs, and Telegraf. Caddy also handles provisioning and renewing LetsEncrypt certificates as needed.
 
-The IGate sends its logs to Fluent Bit via the [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to Telegraf to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/inputs/http) input plugin and Telegraf's [influxdb_v2_listenter](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/influxdb_v2_listener/README.md) plugin.
-
-Fluent Bit ingests the logs from direwolf and writes them to a local file.
+The IGate sends its logs to VictoriaLogs via Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to Telegraf to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to VictoriaLogs HTTP listener and Telegraf's [influxdb_v2_listener](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/influxdb_v2_listener/README.md) plugin.
 
 The Fluent Bit and Telegraf configurations on the igate can be seen in my [Ansible playbooks](https://github.com/bhcleek/ansible-playbooks). The best starting point to review is the [aprs-igate role](https://github.com/bhcleek/ansible-playbooks/tree/main/roles/aprs-igate).
 

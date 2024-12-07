@@ -34,25 +34,16 @@ for type in deb deb-src; do
 	printf "%s [signed-by=/etc/apt/keyrings/caddy.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main\n" "$type" | tee -a /etc/apt/sources.list.d/caddy.list
 done
 
-# TODO(bc): replace fluent-bit with Vector. Keep fluent-bit on the sender,
-# because fluent-bit wins CPU vs Vector. Vector has a Fluent source that can be
-# used to handle records sent with fluent-bit's forward plugin.
-wget -nv -O - https://packages.fluentbit.io/fluentbit.key | gpg --dearmor > /etc/apt/keyrings/fluentbit.gpg
-printf "deb [signed-by=/etc/apt/keyrings/fluentbit.gpg] https://packages.fluentbit.io/ubuntu/${DISTRIB_CODENAME} ${DISTRIB_CODENAME} main\n" | tee -a /etc/apt/sources.list.d/fluentbit.list
-
 apt-get --yes --quiet update
 
 printf "=====> installing packages\n" >&2
-apt-get --yes --quiet install nodejs npm telegraf grafana fluent-bit caddy jq
+apt-get --yes --quiet install nodejs npm telegraf grafana caddy jq
 wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.106.0/victoria-metrics-linux-amd64-v1.106.0.tar.gz | tar -C /usr/local/bin -zxv
 wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.0.0-victorialogs/victoria-logs-linux-amd64-v1.0.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv
 wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.0.0-victorialogs/vlogscli-linux-amd64-v1.0.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv
 
 printf "=====> reloading systemd daemon\n" >&2
 systemctl daemon-reload
-
-printf "=====> enabling fluent-bit service\n" >&2
-systemctl enable fluent-bit
 
 printf "=====> enabling grafana-server service\n" >&2
 systemctl enable grafana-server
