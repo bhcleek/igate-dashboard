@@ -860,7 +860,7 @@
           "editorMode": "builder",
           "expr": "direwolf.stats_dwstats_rf{host=\"$station\"}",
           "interval": "",
-          "legendFormat": "all rf",
+          "legendFormat": "all rf (30m lookback)",
           "range": true,
           "refId": "A"
         },
@@ -879,7 +879,7 @@
           "expr": "direwolf.stats_dwstats_dir{host=\"$station\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "direct rx",
+          "legendFormat": "direct rx (30m lookback)",
           "range": true,
           "refId": "C"
         },
