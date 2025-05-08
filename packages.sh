@@ -34,10 +34,10 @@ apt-get --yes --quiet update
 
 printf "=====> installing packages\n" >&2
 apt-get --yes --quiet install nodejs npm telegraf grafana caddy jq
-wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.106.0/victoria-metrics-linux-amd64-v1.106.0.tar.gz | tar -C /usr/local/bin -zxv
-wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.107.0/vmutils-linux-amd64-v1.107.0.tar.gz | tar -C /usr/local/bin -zxv
-wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.0.0-victorialogs/victoria-logs-linux-amd64-v1.0.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv
-wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.0.0-victorialogs/vlogscli-linux-amd64-v1.0.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv
+wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.116.0/victoria-metrics-linux-amd64-v1.116.0.tar.gz | tar -C /usr/local/bin -zxv
+wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.116.0/vmutils-linux-amd64-v1.116.0.tar.gz | tar -C /usr/local/bin -zxv
+wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.21.0-victorialogs/victoria-logs-linux-amd64-v1.21.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv
+wget -nv -O - https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.21.0-victorialogs/vlogscli-linux-amd64-v1.21.0-victorialogs.tar.gz | tar -C /usr/local/bin -zxv
 
 printf "=====> reloading systemd daemon\n" >&2
 systemctl daemon-reload
