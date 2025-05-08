@@ -770,7 +770,7 @@
       },
       "id": 43,
       "panels": [],
-      "title": "last 24 hours",
+      "title": "activity",
       "type": "row"
     },
     {
@@ -904,7 +904,6 @@
           "refId": "E"
         }
       ],
-      "timeFrom": "1d",
       "title": "APRS Stations Rx",
       "transparent": true,
       "type": "timeseries"
@@ -1008,7 +1007,6 @@
           "refId": "B"
         }
       ],
-      "timeFrom": "1d",
       "title": "APRS-IS Traffic",
       "transparent": true,
       "type": "timeseries"
@@ -1081,7 +1079,7 @@
           "datasource": "VictoriaLogs",
           "refId": "A",
           "editorMode": "code",
-          "expr": "_time:24h AND tags.host:$station | last 1 by (_time) partition by (tags.name) | fields fields.latitude,fields.longitude,tags.name | rename tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
+          "expr": "_time:$__range AND tags.host:$station | last 1 by (_time) partition by (tags.name) | fields fields.latitude,fields.longitude,tags.name | rename tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
           "queryType": "instant"
         }
       ],
@@ -1164,8 +1162,7 @@
             "type": "markers"
           }
         ]
-      },
-      "timeFrom": "1d"
+      }
     },
     {
       "collapsed": true,
