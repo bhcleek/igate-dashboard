@@ -1078,7 +1078,7 @@
       "pluginVersion": "11.3.0+security-01",
       "targets": [
         {
-          "datasource": "VictoiraLogs",
+          "datasource": "VictoriaLogs",
           "refId": "A",
           "editorMode": "code",
           "expr": "_time:24h AND tags.host:$station | fields fields.latitude,fields.longitude,tags.name | rename  tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
