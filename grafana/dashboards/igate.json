@@ -1016,7 +1016,7 @@
     {
       "id": 36,
       "type": "geomap",
-      "title": "Positions Rx via RF",
+      "title": "Most Recent Positions Rx via RF",
       "gridPos": {
         "x": 0,
         "y": 20,
@@ -1081,7 +1081,7 @@
           "datasource": "VictoriaLogs",
           "refId": "A",
           "editorMode": "code",
-          "expr": "_time:24h AND tags.host:$station | fields fields.latitude,fields.longitude,tags.name | rename  tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
+          "expr": "_time:24h AND tags.host:$station | last 1 by (_time) partition by (tags.name) | fields fields.latitude,fields.longitude,tags.name | rename tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
           "queryType": "instant"
         }
       ],
@@ -1235,7 +1235,9 @@
     "from": "now-1d",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": false
+  },
   "timezone": "utc",
   "title": "K7BCX-10",
   "uid": "k7bcx-10",
