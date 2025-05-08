@@ -108,6 +108,7 @@
         "x": 6,
         "y": 1
       },
+      "hideTimeOverride": true,
       "id": 41,
       "maxDataPoints": 100,
       "options": {
@@ -141,6 +142,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "uploaded packets",
       "type": "stat"
     },
@@ -182,6 +184,7 @@
         "x": 11,
         "y": 1
       },
+      "hideTimeOverride": true,
       "id": 42,
       "maxDataPoints": 100,
       "options": {
@@ -213,6 +216,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "downloaded packets",
       "type": "stat"
     },
@@ -255,6 +259,7 @@
         "x": 16,
         "y": 1
       },
+      "hideTimeOverride": true,
       "id": 33,
       "maxDataPoints": 100,
       "options": {
@@ -286,6 +291,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "reachable stations",
       "type": "stat"
     },
@@ -328,6 +334,7 @@
         "x": 6,
         "y": 4
       },
+      "hideTimeOverride": true,
       "id": 25,
       "maxDataPoints": 100,
       "options": {
@@ -361,6 +368,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "all rx",
       "type": "stat"
     },
@@ -403,6 +411,7 @@
         "x": 9,
         "y": 4
       },
+      "hideTimeOverride": true,
       "id": 37,
       "maxDataPoints": 100,
       "options": {
@@ -434,6 +443,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "direct Rx",
       "type": "stat"
     },
@@ -474,6 +484,7 @@
         "x": 20,
         "y": 4
       },
+      "hideTimeOverride": true,
       "id": 40,
       "maxDataPoints": 100,
       "options": {
@@ -540,6 +551,7 @@
           ]
         }
       ],
+      "timeFrom": "1d",
       "title": "Digi Tx",
       "type": "stat"
     },
@@ -582,6 +594,7 @@
         "x": 6,
         "y": 7
       },
+      "hideTimeOverride": true,
       "id": 34,
       "maxDataPoints": 100,
       "options": {
@@ -613,6 +626,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "messages tx",
       "type": "stat"
     },
@@ -655,6 +669,7 @@
         "x": 10,
         "y": 7
       },
+      "hideTimeOverride": true,
       "id": 38,
       "maxDataPoints": 100,
       "options": {
@@ -686,6 +701,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "non-message tx",
       "type": "stat"
     },
@@ -719,6 +735,7 @@
         "x": 19,
         "y": 7
       },
+      "hideTimeOverride": true,
       "id": 46,
       "options": {
         "colorMode": "value",
@@ -748,6 +765,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "1d",
       "title": "uptime",
       "type": "stat"
     },
@@ -1115,7 +1133,7 @@
           "zoom": 11
         }
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaLogs",
