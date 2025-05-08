@@ -65,7 +65,7 @@
         "content": "> System: [igate.k7bcx.com](https://igate.k7bcx.com)\n* Raspbian on Raspberry Pi 5\n* Direwolf 1.7 TNC/APRS Transcoder ([full console](https://igate.k7bcx.com/direwolf))\n* Yaesu FT-2980 at **30W** on **144.39MHz** with Alinco DM-430 PSU\n* Roll-up ladder line j-pole antenna* Easy Digi Sound Card Interface \n\n> Station Info: [K7BCX-10](https://aprs.fi/info/a/K7BCX-10)\n* RF Beacon Interval: **30min WIDE1-1,WIDE2-1** \n* Contact: Billie Cleek / k7bcx at arrl dot net",
         "mode": "markdown"
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "title": "Welcome",
       "transparent": true,
       "type": "text"
@@ -90,8 +90,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -128,7 +127,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -165,8 +164,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -203,7 +201,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -239,8 +237,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -277,7 +274,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -313,8 +310,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -351,7 +347,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -389,8 +385,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -427,7 +422,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -461,8 +456,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -499,7 +493,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "metrics-influxql",
@@ -570,8 +564,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -608,7 +601,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -644,8 +637,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -682,7 +674,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -709,8 +701,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -746,7 +737,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -820,8 +811,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -849,11 +839,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -954,8 +945,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -983,11 +973,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0+security-01",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": "VictoriaMetrics",
@@ -1012,22 +1003,18 @@
       "type": "timeseries"
     },
     {
-      "id": 36,
-      "type": "geomap",
-      "title": "Most Recent Positions Rx via RF",
-      "gridPos": {
-        "x": 0,
-        "y": 20,
-        "h": 20,
-        "w": 24
-      },
+      "datasource": "VictoriaLogs",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
           "custom": {
             "hideFrom": {
+              "legend": false,
               "tooltip": false,
-              "viz": false,
-              "legend": false
+              "viz": false
             }
           },
           "mappings": [],
@@ -1035,81 +1022,36 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
-          },
-          "color": {
-            "fixedColor": "dark-red",
-            "mode": "fixed"
           }
         },
         "overrides": []
       },
-      "transformations": [
-        {
-          "id": "extractFields",
-          "options": {
-            "source": "labels",
-            "format": "json",
-            "jsonPaths": [
-              {
-                "path": "name",
-                "alias": "name"
-              },
-              {
-                "path": "latitude",
-                "alias": "latitude"
-              },
-              {
-                "path": "longitude",
-                "alias": "longitude"
-              }
-            ],
-            "replace": true,
-            "keepTime": true
-          }
-        }
-      ],
-      "transparent": true,
-      "pluginVersion": "11.3.0+security-01",
-      "targets": [
-        {
-          "datasource": "VictoriaLogs",
-          "refId": "A",
-          "editorMode": "code",
-          "expr": "_time:$__range AND tags.host:$station | last 1 by (_time) partition by (tags.name) | fields fields.latitude,fields.longitude,tags.name | rename tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
-          "queryType": "instant"
-        }
-      ],
+      "gridPos": {
+        "h": 20,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 36,
       "maxDataPoints": 1,
-      "datasource": "VictoriaLogs",
       "options": {
-        "view": {
-          "allLayers": true,
-          "id": "coords",
-          "lat": 45.579288,
-          "lon": -122.644851,
-          "zoom": 11
-        },
-        "controls": {
-          "showZoom": true,
-          "mouseWheelZoom": false,
-          "showAttribution": true,
-          "showScale": false,
-          "showMeasure": false,
-          "showDebug": false
-        },
-        "tooltip": {
-          "mode": "details"
-        },
         "basemap": {
           "config": {},
           "name": "Basemap",
           "opacity": 1,
           "tooltip": true,
           "type": "osm-standard"
+        },
+        "controls": {
+          "mouseWheelZoom": false,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
         },
         "layers": [
           {
@@ -1154,15 +1096,63 @@
               }
             },
             "location": {
-              "mode": "auto",
-              "lookup": "Line"
+              "lookup": "Line",
+              "mode": "auto"
             },
             "name": "positions",
             "tooltip": true,
             "type": "markers"
           }
-        ]
-      }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 45.579288,
+          "lon": -122.644851,
+          "zoom": 11
+        }
+      },
+      "pluginVersion": "11.3.0+security-01",
+      "targets": [
+        {
+          "datasource": "VictoriaLogs",
+          "editorMode": "code",
+          "expr": "_time:$__range AND tags.host:$station | last 1 by (_time) partition by (tags.name) | fields fields.latitude,fields.longitude,tags.name | rename tags.name as name, fields.latitude as latitude, fields.longitude as longitude",
+          "queryType": "instant",
+          "refId": "A"
+        }
+      ],
+      "title": "Most Recent Positions Rx via RF",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "jsonPaths": [
+              {
+                "alias": "name",
+                "path": "name"
+              },
+              {
+                "alias": "latitude",
+                "path": "latitude"
+              },
+              {
+                "alias": "longitude",
+                "path": "longitude"
+              }
+            ],
+            "keepTime": true,
+            "replace": true,
+            "source": "labels"
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "geomap"
     },
     {
       "collapsed": true,
@@ -1208,7 +1198,7 @@
   ],
   "preload": false,
   "refresh": "5m",
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [
     "aprs"
   ],
@@ -1229,15 +1219,12 @@
     ]
   },
   "time": {
-    "from": "now-1d",
+    "from": "now-24h",
     "to": "now"
   },
-  "timepicker": {
-    "hidden": false
-  },
+  "timepicker": {},
   "timezone": "utc",
   "title": "K7BCX-10",
   "uid": "k7bcx-10",
-  "version": 1,
-  "weekStart": ""
+  "version": 1
 }
