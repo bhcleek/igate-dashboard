@@ -45,7 +45,7 @@ The dashboards consists of several components:
 
 A Caddy webserver reverse proxies to Grafana, VictoriaLogs, and VictoriaMetrics' vmagent. Caddy also handles provisioning and renewing LetsEncrypt certificates as needed.
 
-The IGate sends its logs to VictoriaLogs via Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to vmagent to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to VictoriaLogs HTTP listener and Telegraf's [influxdb_v2_listener](https://github.com/influxdata/telegraf/blob/master/plugins/inputs/influxdb_v2_listener/README.md) plugin.
+The IGate sends its logs to VictoriaLogs via Fluent Bit's [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output plugin to the `logs_domain`. Similarly, the IGate sends its metrics to vmagent to the `metrics_domain`. Caddy ensures the communication is authenticated and encrypted and reverse proxies the connections to VictoriaLogs and vmagent's HTTP listeners.
 
 The Fluent Bit, Telegraf, and Dire Wolf configurations on the igate can be seen in my [Ansible playbooks](https://github.com/bhcleek/ansible-playbooks). The best starting point to review is the [aprs-igate role](https://github.com/bhcleek/ansible-playbooks/tree/main/roles/aprs-igate).
 
